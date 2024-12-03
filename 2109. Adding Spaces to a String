@@ -1,0 +1,19 @@
+class Solution {
+public:
+    /*bool contains(const set<int>& spacesSet, int element) {
+        return spacesSet.find(element) != spacesSet.end();
+    }*/
+    string addSpaces(string s, vector<int>& spaces) {
+        string ans;
+        int sp =0;
+        ans.reserve(s.size() + spaces.size());
+        for(int i = 0; i<s.length(); i++){
+            if(sp<spaces.size() && i==spaces[sp]){
+                ans += ' ';
+                sp++;
+            }
+            ans += s[i];
+        }
+        return ans;
+    }
+};
