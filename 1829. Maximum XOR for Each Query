@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> getMaximumXor(vector<int>& nums, int Bit) {
+        int n = nums.size(), mask = (1 << Bit)-1;
+        vector<int> Pxor(n);
+        vector<int> ans(n);
+        Pxor[0] = nums[0];
+        for(int i=1; i<n; i++){
+            Pxor[i] = Pxor[i-1]^nums[i];
+        }
+        for(int i=0; i<n; i++){
+            int cur = Pxor[n-i-1];
+            ans[i] = cur^mask;
+        }
+        return ans;
+    }
+};
