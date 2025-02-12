@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string longestDiverseString(int a, int b, int c) {
+        int n = a+b+c;
+        string ans = "";
+        int cura = 0, curb = 0, curc = 0;
+        for(int i =0; i<n; i++){
+            if((a>=b && a>=c && cura != 2) || (a>0 && (curb==2 || curc==2))){
+                ans += 'a';
+                cura++;
+                a--;
+                curb = 0;
+                curc = 0;
+            }
+            else if((b>=a && b>=c && curb != 2) || (b>0 && (cura==2 || curc==2))){
+                ans += 'b';
+                curb++;
+                b--;
+                cura = 0;
+                curc = 0;
+            }
+            else if((c>=a && c>=b && curc != 2) || (c>0 && (cura==2 || curb==2))){
+                ans += 'c';
+                curc++;
+                c--;
+                cura = 0;
+                curb = 0;
+            }
+        }
+        return ans;
+    }
+};
