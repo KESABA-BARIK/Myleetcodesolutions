@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countTriplets(vector<int>& arr) {
+        int count=0;
+        vector<int> prefixXor(arr.size()+1,0);
+        for(int i=0;i<arr.size();++i){
+            prefixXor[i+1]=prefixXor[i]^arr[i];
+        }
+        for(int i=0;i<arr.size();++i){
+            for(int j=i+1;j<arr.size();++j){
+                if(prefixXor[i]==prefixXor[j+1]){
+                    count+=j-i;
+                }
+            }
+        }
+        
+        return count;
+    }
+};
