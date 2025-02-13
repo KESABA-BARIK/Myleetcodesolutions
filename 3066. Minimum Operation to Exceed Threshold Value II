@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int count = 0;
+        priority_queue<long, vector<long>, greater<long>> Heap(nums.begin(),nums.end());
+        while(Heap.top() < k){
+            long a = Heap.top();
+            Heap.pop();
+            long b = Heap.top();
+            Heap.pop();
+            Heap.push(a*2+b);
+            count++;
+        }
+
+        return count;
+    }
+};
