@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
+        vector<int> ans;
+        for(const auto& circle: queries){
+            int count = 0;
+            for(const auto& pts: points){
+                
+                    count+= (circle[0] - pts[0])*(circle[0] - pts[0]) + (circle[1] - pts[1])*(circle[1] - pts[1])-circle[2]*circle[2] <=0;
+                
+            }
+            ans.push_back(count);
+        }
+        return ans;
+    }
+};
